@@ -37,7 +37,7 @@ export class DashboardRightSidePanelComponent implements OnInit {
 
   generateForm() {
 
-   /*  console.log(dashboardData)
+   /*  SEE MY COMMENTS
     this.panelForm = new FormGroup({
       entityId: new FormControl(dashboardData.EntityId, Validators.required),
       entityTypeId: new FormControl(dashboardData.EntityTypeId, Validators.required),
