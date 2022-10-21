@@ -36,6 +36,17 @@ export class DashboardRightSidePanelComponent implements OnInit {
   }
 
   generateForm() {
+
+   /*  SEE MY COMMENTS
+    this.panelForm = new FormGroup({
+      entityId: new FormControl(dashboardData.EntityId, Validators.required),
+      entityTypeId: new FormControl(dashboardData.EntityTypeId, Validators.required),
+      name: new FormControl(dashboardData.Name, Validators.required), */
+      /* Here start creating an array of containers. It is one form. You have to add a type field, i.e. type=text, type=image */
+      /* If it is a common property -> Validation required. If not then no validation */
+      /* Currently let's add all the mandatory fields */
+
+
     this.panelForm = new FormGroup({
       nameText: new FormControl('untitled'),
       typeText: new FormControl('Text'),
