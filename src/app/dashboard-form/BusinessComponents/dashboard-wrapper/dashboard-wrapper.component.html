@@ -1,7 +1,7 @@
 <div style="height: 40px;"
-    class="itl-background-1c1e20 itl-controlPanel-12 d-flex flex-column justify-content-center  itl-dashboard-form">
+    class="DarkScheme itl-background-1c1e20 itl-controlPanel-12 d-flex flex-column justify-content-center  itl-dashboard-form">
     <div class="d-flex justify-content-end pe-3 ps-3">
-        <mat-icon *ngIf="dashboardElement&&dashboardElement.AccessLevel==='Owner'||statusType==='new'"
+        <mat-icon 
             class="itl-cursor-pointer" value="side" (click)="toggleDrawer()"
             [ngClass]="{'itl-color-e36c26':drawer.opened,'itl-color-6d6d6d':!drawer.opened}">edit</mat-icon>
         <!--         <mat-icon *ngIf="dashboardElement&&dashboardElement.AccessLevel==='Owner'" class="itl-color-e36c26" value="push"
@@ -11,7 +11,7 @@
 <div style="height: 100vh;" class="mat-typography mat-app-background position-relative header-image">
     <div class="container-fluid m-0 p-0 position-relative">
         <!-- container -->
-        <div *ngIf="dashboardElement" class="position-absolute" style="width: 25%;height: 25%;top: 37.5%;left: 37.5%;">
+        <div class="position-absolute" style="width: 25%;height: 25%;top: 37.5%;left: 37.5%;">
             <div *ngFor="let box of boxArray; let i = index" class="resizable"
                 [ngStyle]="{'z-index':isNavigatedAway?0:3}"
                 [style.transform]="'translate3d(' + box.x + 'px,' + box.y + 'px,' + '0px)'" [style.width.px]="box.width"
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div *ngIf="statusType!=='load'">
+        <div>
             <div class="row" *ngFor="let item of grid; let i=index">
                 <div class="col itl-thik-border-top-color-198f95" style="height: 8.33vh;"
                     *ngFor="let item of grid; let i=index">
