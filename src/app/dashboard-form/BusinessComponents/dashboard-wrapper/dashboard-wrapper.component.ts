@@ -45,11 +45,11 @@ export class DashboardWrapperComponent implements OnInit {
       this.boxArray = []
 
       if(!val ||!val.url) this.isNavigatedAway=true;
-      if(val.url.includes('menuBar')){
-        this.isNavigatedAway=true;  
-      }else{
+      // if(val.url.includes('menuBar')){
+      //   this.isNavigatedAway=true;  
+      // }else{
         this.isNavigatedAway=false;
-      }
+      // }
     })
   }
 
