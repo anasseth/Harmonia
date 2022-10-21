@@ -1,0 +1,11 @@
+<div class="d-flex justify-content-start">
+    <div class="colour-e5e5e5 w-50 itl-fs-12">{{settings.title}}:</div>
+    <div class="colour-e5e5e5 w-50 d-flex justify-content-end">
+        <input 
+        type="text" 
+        style="height: 23px" 
+        class="itl-fs-12 itl-input-background ps-1 pe-1"
+        [ngClass]="settings.width"
+        [value]="settings.formGroup.get(settings.fieldName)?.value"/>
+    </div>
+</div>

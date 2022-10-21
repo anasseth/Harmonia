@@ -1,0 +1,47 @@
+<div style="height: 40px;"
+    class="itl-background-1c1e20 itl-controlPanel-12 d-flex flex-column justify-content-center  itl-dashboard-form">
+    <div class="d-flex justify-content-end pe-3 ps-3">
+        <mat-icon *ngIf="dashboardElement&&dashboardElement.AccessLevel==='Owner'||statusType==='new'"
+            class="itl-cursor-pointer" value="side" (click)="toggleDrawer()"
+            [ngClass]="{'itl-color-e36c26':drawer.opened,'itl-color-6d6d6d':!drawer.opened}">edit</mat-icon>
+        <!--         <mat-icon *ngIf="dashboardElement&&dashboardElement.AccessLevel==='Owner'" class="itl-color-e36c26" value="push"
+            (click)="drawer.toggle()">reply_all</mat-icon> -->
+    </div>
+</div>
+<div style="height: 100vh;" class="mat-typography mat-app-background position-relative header-image">
+    <div class="container-fluid m-0 p-0 position-relative">
+        <!-- container -->
+        <div *ngIf="dashboardElement" class="position-absolute" style="width: 25%;height: 25%;top: 37.5%;left: 37.5%;">
+            <div *ngFor="let box of boxArray; let i = index" class="resizable"
+                [ngStyle]="{'z-index':isNavigatedAway?0:3}"
+                [style.transform]="'translate3d(' + box.x + 'px,' + box.y + 'px,' + '0px)'" [style.width.px]="box.width"
+                [style.height.px]="box.height" (mousedown)="setStatus($event, 2, null, i)"
+                (window:mouseup)="setStatus($event, 0, null, i)">
+                <div class="cursor-1 resizer top-left" (mousedown)="setStatus($event, 1, topLeftResize, i)"></div>
+                <div class="cursor-2 resizer top-right" (mousedown)="setStatus($event, 1, topRightResize, i)"></div>
+                <div class="cursor-4 resizer bottom-left" (mousedown)="setStatus($event, 1, bottomLeftResize, i)"></div>
+                <div class="cursor-3 resizer bottom-right" (mousedown)="setStatus($event, 1, bottomRightResize, i)">
+                </div>
+            </div>
+        </div>
+        <div *ngIf="statusType!=='load'">
+            <div class="row" *ngFor="let item of grid; let i=index">
+                <div class="col itl-thik-border-top-color-198f95" style="height: 8.33vh;"
+                    *ngFor="let item of grid; let i=index">
+                </div>
+            </div>
+        </div>
+    </div>
+    <mat-drawer-container class="itl-drawer-container position-absolute">
+        <mat-drawer #drawer [mode]="mode.value" position="end" [opened]="statusType==='new'" style="width: 263px">
+            <itl-dashboard-right-side-panel (onCreateNewContainer)="createNewContainer()">
+            </itl-dashboard-right-side-panel>
+        </mat-drawer>
+        <mat-drawer-content>
+            <mat-form-field appearance="fill" class="invisible">
+                <mat-select #mode value="push" class="invisible">
+                </mat-select>
+            </mat-form-field>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

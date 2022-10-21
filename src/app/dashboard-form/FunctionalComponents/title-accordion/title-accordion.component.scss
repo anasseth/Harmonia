@@ -1,0 +1,19 @@
+::ng-deep .mat-expansion-panel-header-title {
+    color: var(--text-title) !important;
+    font-weight: 700
+}
+::ng-deep .mat-expansion-indicator::after, .mat-expansion-indicator::after{
+    color: var(--text-title) !important;    
+}
+::ng-deep .mat-expansion-panel-header.mat-expanded,
+::ng-deep .mat-expansion-panel-header,
+::ng-deep .mat-expansion-panel-header.mat-expanded:hover
+::ng-deep .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:hover:not([aria-disabled=true]) {
+    background: var(--background-2) !important;
+}
+::ng-deep .mat-expansion-panel{
+    background-color: var(--background-3) !important;    
+}
+::ng-deep .mat-expansion-panel-body{
+    padding: 8px 24px !important;
+}

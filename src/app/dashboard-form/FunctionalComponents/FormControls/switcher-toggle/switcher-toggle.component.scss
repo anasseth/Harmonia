@@ -1,0 +1,11 @@
+.itl-settings-switch{
+    height: 18px;
+    width: 58px;
+}
+:not(.btn-check) + .btn:hover, .btn:first-child:hover{
+    color: #198f95;
+    background-color: var(--background-3);
+}
+.btn-primary{
+    background-color: var(--background-3);
+}
