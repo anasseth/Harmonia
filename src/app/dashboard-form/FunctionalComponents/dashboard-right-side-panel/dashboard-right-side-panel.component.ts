@@ -1,23 +1,28 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, EventEmitter, OnInit, OnChanges, Output, Input, ViewChild, SimpleChanges } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { DashBoardFormService } from '../../services/dashboard-form.service';
+import { selectorData } from '../../BusinessComponents/dashboard-wrapper/sample.data';
 
 @Component({
   selector: 'itl-dashboard-right-side-panel',
   templateUrl: './dashboard-right-side-panel.component.html',
   styleUrls: ['./dashboard-right-side-panel.component.scss', '../../styles.scss']
 })
-export class DashboardRightSidePanelComponent implements OnInit {
+export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
   @Output() onCreateNewContainer = new EventEmitter();
+  @Input() selectedIndex!: any;
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   selector: number = 0;
+  selectorName: string = 'Text';
   panelForm!: FormGroup;
+  containerSpecControlForm!: FormGroup;
   panelOpenContentState: boolean = false;
   private dashboardFormService: DashBoardFormService;
 
   constructor(
     private _dashboardFormService: DashBoardFormService,
+    public fb: FormBuilder
   ) {
     this.dashboardFormService = _dashboardFormService;
   }
@@ -27,25 +32,61 @@ export class DashboardRightSidePanelComponent implements OnInit {
     this.dashboardFormService.onUploadDashboard.subscribe((x) => {
       //this.accordion.closeAll();
     })
+    if (this.selectedIndex == -1) {
+    }
+    else {
+      this.containerSpecControlForm.patchValue(
+        this.dashboardFormService.containerArray[this.selectedIndex]
+      )
+      console.log("Form Updated : ", this.containerSpecControlForm.value);
+    }
+
+    this.containerSpecControlForm.valueChanges.subscribe(
+      (changes) => {
+        console.log("Form Updated : ", changes)
+      }
+    )
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    // console.log("Change Detected 1 : ", changes['selectedIndex'].currentValue)
+    // console.log("Change Detected 2 : ", changes)
   }
 
   /* Add text container */
   addContainer(selector: any) {
     this.selector = selector;
-    this.onCreateNewContainer.emit();
+    this.selectorName = selectorData.filter((x) => x.selectorId == selector)[0].selectorName
+    this.onCreateNewContainer.emit(this.containerSpecControlForm.value);
   }
 
   generateForm() {
 
-   /*  SEE MY COMMENTS
-    this.panelForm = new FormGroup({
-      entityId: new FormControl(dashboardData.EntityId, Validators.required),
-      entityTypeId: new FormControl(dashboardData.EntityTypeId, Validators.required),
-      name: new FormControl(dashboardData.Name, Validators.required), */
-      /* Here start creating an array of containers. It is one form. You have to add a type field, i.e. type=text, type=image */
-      /* If it is a common property -> Validation required. If not then no validation */
-      /* Currently let's add all the mandatory fields */
-
+    this.containerSpecControlForm = this.fb.group(
+      {
+        pageID: [0],
+        pageContainerID: [0],
+        name: ['Untitled'],
+        pageContainerType: [this.selectorName],
+        tag: [''],
+        containerPosition: this.fb.group(
+          {
+            top: [0],
+            height: [250],
+            width: [250],
+            left: [0]
+          }
+        ),
+        ContainerPadding: this.fb.group(
+          {
+            top: [0],
+            bottom: [0],
+            right: [0],
+            left: [0],
+          }
+        )
+      }
+    )
 
     this.panelForm = new FormGroup({
       nameText: new FormControl('untitled'),

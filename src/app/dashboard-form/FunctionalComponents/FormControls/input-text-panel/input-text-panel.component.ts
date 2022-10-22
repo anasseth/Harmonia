@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 export interface IInputText{
   title: string;
   fieldName: string;
-  formGroup: FormGroup;
+  formGroup: FormGroup | any;
   width: string;
 }
 @Component({

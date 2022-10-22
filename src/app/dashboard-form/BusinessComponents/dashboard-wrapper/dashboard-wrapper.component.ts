@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, NgZone, HostListener } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
-import {DashBoardFormService} from '../../services/dashboard-form.service';
+import { DashBoardFormService } from '../../services/dashboard-form.service';
 import { Observable } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 
@@ -12,10 +12,10 @@ const enum Status {
 @Component({
   selector: 'itl-dashboard-wrapper',
   templateUrl: './dashboard-wrapper.component.html',
-  styleUrls: ['./dashboard-wrapper.component.scss','../../styles.scss']
+  styleUrls: ['./dashboard-wrapper.component.scss', '../../styles.scss']
 })
 export class DashboardWrapperComponent implements OnInit {
-  isNavigatedAway: boolean=true;
+  isNavigatedAway: boolean = true;
   boxArray: any = []
 
   index = -1;
@@ -30,73 +30,66 @@ export class DashboardWrapperComponent implements OnInit {
   resizer!: any;
   status!: Status;
 
-  @ViewChild('drawer') matDrawer!: MatDrawer; 
-  grid=[1,2,3,4,5,6,7,8,9,10,11,12]
-  private dashboardFormService: DashBoardFormService;
-  dashboardElement:any;
-  statusType: string='load';
+  @ViewChild('drawer') matDrawer!: MatDrawer;
+  grid = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  dashboardElement: any;
+  statusType: string = 'load';
   constructor(
     private router: Router,
     private ngZone: NgZone,
-    private _dashboardFormService: DashBoardFormService
-  ) { 
-    this.dashboardFormService=_dashboardFormService;
-    router.events.subscribe((val: NavigationEnd | any)=>{
-      this.boxArray = []
-
-      if(!val ||!val.url) this.isNavigatedAway=true;
-      // if(val.url.includes('menuBar')){
-      //   this.isNavigatedAway=true;  
-      // }else{
-        this.isNavigatedAway=false;
-      // }
+    public dashboardFormService: DashBoardFormService
+  ) {
+    router.events.subscribe((val: NavigationEnd | any) => {
+      this.dashboardFormService.containerArray = []
+      if (!val || !val.url) this.isNavigatedAway = true;
+      this.isNavigatedAway = false;
     })
   }
 
   ngOnInit(): void {
-    this.dashboardFormService.onUploadDashboard.subscribe((x)=>{
-      this.dashboardElement=x.data;
-      this.statusType=x.statustype;
-      if(this.statusType==='load')this.matDrawer.close()
+    this.dashboardFormService.onUploadDashboard.subscribe((x) => {
+      this.dashboardElement = x.data;
+      this.statusType = x.statustype;
+      if (this.statusType === 'load') this.matDrawer.close()
     })
   }
 
-  toggleDrawer(){
+  toggleDrawer() {
     this.matDrawer.toggle();
-    this.statusType=this.matDrawer.opened?'new':'load';
+    this.statusType = this.matDrawer.opened ? 'new' : 'load';
     console.log(this.matDrawer.opened);
   }
 
   topLeftResize(offsetX: number, offsetY: number) {
-    this.boxArray[this.index].x += offsetX;
-    this.boxArray[this.index].y += offsetY;
-    this.boxArray[this.index].width -= offsetX;
-    this.boxArray[this.index].height -= offsetY;
+    this.dashboardFormService.containerArray[this.index].containerPosition.left+= offsetX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.top += offsetY;
+    this.dashboardFormService.containerArray[this.index].containerPosition.width -= offsetX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.height -= offsetY;
   }
 
   topRightResize(offsetX: number, offsetY: number) {
-    this.boxArray[this.index].y += offsetY;
-    this.boxArray[this.index].width += offsetX;
-    this.boxArray[this.index].height -= offsetY;
+    this.dashboardFormService.containerArray[this.index].containerPosition.top += offsetY;
+    this.dashboardFormService.containerArray[this.index].containerPosition.width += offsetX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.height -= offsetY;
   }
 
   bottomLeftResize(offsetX: number, offsetY: number) {
-    this.boxArray[this.index].x += offsetX;
-    this.boxArray[this.index].width -= offsetX;
-    this.boxArray[this.index].height += offsetY;
+    this.dashboardFormService.containerArray[this.index].containerPosition.left+= offsetX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.width -= offsetX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.height += offsetY;
   }
 
   bottomRightResize(offsetX: number, offsetY: number) {
-    this.boxArray[this.index].width += offsetX;
-    this.boxArray[this.index].height += offsetY;
+    this.dashboardFormService.containerArray[this.index].containerPosition.width += offsetX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.height += offsetY;
   }
 
   onCornerClick(event: MouseEvent, resizer?: Function, index?: any) {
     console.log(index)
     this.index = index ? index : -1;
     this.draggingCorner = true;
-    this.boxArray[this.index].px = event.clientX;
-    this.boxArray[this.index].py = event.clientY;
+    this.dashboardFormService.containerArray[this.index].containerPosition.px = event.clientX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.py = event.clientY;
     this.resizer = resizer;
     this.status = 1;
     event.preventDefault();
@@ -109,13 +102,13 @@ export class DashboardWrapperComponent implements OnInit {
       return;
     }
 
-    let offsetX = event.clientX - this.boxArray[this.index].px;
-    let offsetY = event.clientY - this.boxArray[this.index].py;
+    let offsetX = event.clientX - this.dashboardFormService.containerArray[this.index].containerPosition.px;
+    let offsetY = event.clientY - this.dashboardFormService.containerArray[this.index].containerPosition.py;
 
     if (this.status === Status.RESIZE) this.resizer(offsetX, offsetY);
     else if (this.status === Status.MOVE) this.onDrag(offsetX, offsetY, this.index);
-    this.boxArray[this.index].px = event.clientX;
-    this.boxArray[this.index].py = event.clientY;
+    this.dashboardFormService.containerArray[this.index].containerPosition.px = event.clientX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.py = event.clientY;
   }
 
   @HostListener("document:mouseup", ["$event"])
@@ -128,34 +121,50 @@ export class DashboardWrapperComponent implements OnInit {
 
     if (status === 1) {
       this.draggingCorner = true;
-      this.boxArray[this.index].px = event.clientX;
-      this.boxArray[this.index].py = event.clientY;
+      this.dashboardFormService.containerArray[this.index].containerPosition.px = event.clientX;
+      this.dashboardFormService.containerArray[this.index].containerPosition.py = event.clientY;
       this.resizer = func;
       this.status = 1;
       event.preventDefault();
       event.stopPropagation();
     } else if (status === 2) {
       this.draggingCorner = true;
-      this.boxArray[this.index].px = event.clientX;
-      this.boxArray[this.index].py = event.clientY;
+      this.dashboardFormService.containerArray[this.index].containerPosition.px = event.clientX;
+      this.dashboardFormService.containerArray[this.index].containerPosition.py = event.clientY;
       this.status = 2;
     }
   }
 
   onDrag(x: any, y: any, index: any) {
-    this.boxArray[index].x = this.boxArray[index].x + x;
-    this.boxArray[index].y = this.boxArray[index].y + y;
+    this.dashboardFormService.containerArray[index].containerPosition.left= this.dashboardFormService.containerArray[index].containerPosition.left+ x;
+    this.dashboardFormService.containerArray[index].containerPosition.top = this.dashboardFormService.containerArray[index].containerPosition.top + y;
   }
 
-  createNewContainer() {
-    var obj = {
-      x: 50,
-      y: 150,
-      px: 0,
-      py: 0,
-      width: 150,
-      height: 70,
+  createNewContainer(event: any) {
+    console.log("Container Spec : ", JSON.stringify(event, undefined, 3))
+
+    var a = {
+      pageID: 0,
+      pageContainerID: 0,
+      name: "Untitled",
+      pageContainerType: "Text",
+      tag: "",
+      containerPosition: {
+        top: 0,
+        left: 0,
+        px: 0,
+        py: 0,
+        height: 250,
+        width: 250,
+      },
+      ContainerPadding: {
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0
+      }
     }
-    this.boxArray.push(obj)
+
+    this.dashboardFormService.containerArray.push(event)
   }
 }

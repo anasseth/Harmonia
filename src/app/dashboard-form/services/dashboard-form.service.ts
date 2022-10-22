@@ -9,5 +9,13 @@ export interface IDashboard{
 export class DashBoardFormService {
     onUploadDashboard = new EventEmitter<IDashboard>(); 
     onAddingContainer = new EventEmitter<IDashboard>(); 
+    //
+    containerArray:any = []
+    selectedContainerIndex = -1;
+    dashBoardData = {}
+
+    getDashBoardData(){
+
+    }
 }
 
