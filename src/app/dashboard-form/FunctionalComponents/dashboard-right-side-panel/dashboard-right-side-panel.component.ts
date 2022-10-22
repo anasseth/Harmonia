@@ -38,18 +38,22 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
       this.containerSpecControlForm.patchValue(
         this.dashboardFormService.containerArray[this.selectedIndex]
       )
-      console.log("Form Updated : ", this.containerSpecControlForm.value);
+      // console.log("Form Updated : ", this.containerSpecControlForm.value);
     }
 
     this.containerSpecControlForm.valueChanges.subscribe(
       (changes) => {
-        console.log("Form Updated : ", changes)
+        // console.log("Form Updated : ", changes)
       }
     )
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // console.log("Change Detected 1 : ", changes['selectedIndex'].currentValue)
+    console.log("Change Detected 1 : ", changes['selectedIndex'].currentValue)
+    this.containerSpecControlForm.patchValue(
+      this.dashboardFormService.containerArray[this.selectedIndex]
+    )
+    // console.log("Selected Index : ", this.selectedIndex)
     // console.log("Change Detected 2 : ", changes)
   }
 

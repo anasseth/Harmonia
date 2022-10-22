@@ -19,6 +19,7 @@ export class DashboardWrapperComponent implements OnInit {
   boxArray: any = []
 
   index = -1;
+  selectedIndex = -1;
 
   x = 50;
   y = 50;
@@ -61,7 +62,7 @@ export class DashboardWrapperComponent implements OnInit {
   }
 
   topLeftResize(offsetX: number, offsetY: number) {
-    this.dashboardFormService.containerArray[this.index].containerPosition.left+= offsetX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.left += offsetX;
     this.dashboardFormService.containerArray[this.index].containerPosition.top += offsetY;
     this.dashboardFormService.containerArray[this.index].containerPosition.width -= offsetX;
     this.dashboardFormService.containerArray[this.index].containerPosition.height -= offsetY;
@@ -74,7 +75,7 @@ export class DashboardWrapperComponent implements OnInit {
   }
 
   bottomLeftResize(offsetX: number, offsetY: number) {
-    this.dashboardFormService.containerArray[this.index].containerPosition.left+= offsetX;
+    this.dashboardFormService.containerArray[this.index].containerPosition.left += offsetX;
     this.dashboardFormService.containerArray[this.index].containerPosition.width -= offsetX;
     this.dashboardFormService.containerArray[this.index].containerPosition.height += offsetY;
   }
@@ -87,6 +88,7 @@ export class DashboardWrapperComponent implements OnInit {
   onCornerClick(event: MouseEvent, resizer?: Function, index?: any) {
     console.log(index)
     this.index = index ? index : -1;
+    // console.log("On Corner Click")
     this.draggingCorner = true;
     this.dashboardFormService.containerArray[this.index].containerPosition.px = event.clientX;
     this.dashboardFormService.containerArray[this.index].containerPosition.py = event.clientY;
@@ -118,6 +120,7 @@ export class DashboardWrapperComponent implements OnInit {
 
   setStatus(event: MouseEvent, status: number, func: any, index: any) {
     this.index = index ? index : 0;
+    // console.log("On Set Status")
 
     if (status === 1) {
       this.draggingCorner = true;
@@ -136,16 +139,17 @@ export class DashboardWrapperComponent implements OnInit {
   }
 
   onDrag(x: any, y: any, index: any) {
-    this.dashboardFormService.containerArray[index].containerPosition.left= this.dashboardFormService.containerArray[index].containerPosition.left+ x;
+    this.dashboardFormService.containerArray[index].containerPosition.left = this.dashboardFormService.containerArray[index].containerPosition.left + x;
     this.dashboardFormService.containerArray[index].containerPosition.top = this.dashboardFormService.containerArray[index].containerPosition.top + y;
   }
 
   createNewContainer(event: any) {
     console.log("Container Spec : ", JSON.stringify(event, undefined, 3))
 
-    var a = {
+    var newObjectSpec = {
       pageID: 0,
       pageContainerID: 0,
+      containerIndex: this.dashboardFormService.containerArray.length,
       name: "Untitled",
       pageContainerType: "Text",
       tag: "",
@@ -165,6 +169,15 @@ export class DashboardWrapperComponent implements OnInit {
       }
     }
 
-    this.dashboardFormService.containerArray.push(event)
+    this.dashboardFormService.containerArray.push(newObjectSpec);
+
+    console.log("Container Array : ", this.dashboardFormService.containerArray);
+  }
+
+  activateContainer(index: any) {
+    console.log("On Double Click !")
+    this.dashboardFormService.selectedContainerIndex = index;
+    this.selectedIndex = index;
+    console.log("Container Index : ", this.dashboardFormService.selectedContainerIndex)
   }
 }

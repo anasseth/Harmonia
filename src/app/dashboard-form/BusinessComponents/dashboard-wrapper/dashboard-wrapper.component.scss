@@ -65,11 +65,22 @@ p {
   z-index: 3;
 }
 
+.activeContainer {
+  border: 1px dashed rgb(255, 0, 0);
+}
+
 .resizer {
   position: absolute;
   width: 15px;
   height: 15px;
-  background-color: rgb(250 250 255 / 35%);
+  background-color: rgba(255, 250, 250, 0.35);
+}
+
+.activeResizer {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(255, 0, 0, 0.588);
 }
 
 .top-left {
