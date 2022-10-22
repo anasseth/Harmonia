@@ -43,18 +43,20 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
 
     this.containerSpecControlForm.valueChanges.subscribe(
       (changes) => {
-        // console.log("Form Updated : ", changes)
+        console.log("Form Updated : ", JSON.stringify(changes))
+        this.dashboardFormService.containerArray[this.selectedIndex] = changes
+        console.log(this.dashboardFormService.containerArray)
       }
     )
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log("Change Detected 1 : ", changes['selectedIndex'].currentValue)
-    this.containerSpecControlForm.patchValue(
-      this.dashboardFormService.containerArray[this.selectedIndex]
-    )
-    // console.log("Selected Index : ", this.selectedIndex)
-    // console.log("Change Detected 2 : ", changes)
+    if (this.selectedIndex != -1) {
+      this.containerSpecControlForm.patchValue(
+        this.dashboardFormService.containerArray[this.selectedIndex]
+      )
+    }
   }
 
   /* Add text container */
@@ -70,6 +72,7 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
       {
         pageID: [0],
         pageContainerID: [0],
+        containerIndex:[0],
         name: ['Untitled'],
         pageContainerType: [this.selectorName],
         tag: [''],

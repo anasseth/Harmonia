@@ -139,14 +139,13 @@ export class DashboardWrapperComponent implements OnInit {
   }
 
   onDrag(x: any, y: any, index: any) {
-    this.dashboardFormService.containerArray[index].containerPosition.left = this.dashboardFormService.containerArray[index].containerPosition.left + x;
-    this.dashboardFormService.containerArray[index].containerPosition.top = this.dashboardFormService.containerArray[index].containerPosition.top + y;
+    this.dashboardFormService.containerArray[index].containerPosition.left = (this.dashboardFormService.containerArray[index].containerPosition.left + x) < 0 ? 0 : (this.dashboardFormService.containerArray[index].containerPosition.left + x);
+    this.dashboardFormService.containerArray[index].containerPosition.top = (this.dashboardFormService.containerArray[index].containerPosition.top + y) < 0 ? 0 : (this.dashboardFormService.containerArray[index].containerPosition.top + y);
   }
 
   createNewContainer(event: any) {
-    console.log("Container Spec : ", JSON.stringify(event, undefined, 3))
 
-    var newObjectSpec = {
+    var newContainerSpec = {
       pageID: 0,
       pageContainerID: 0,
       containerIndex: this.dashboardFormService.containerArray.length,
@@ -169,15 +168,13 @@ export class DashboardWrapperComponent implements OnInit {
       }
     }
 
-    this.dashboardFormService.containerArray.push(newObjectSpec);
-
+    this.dashboardFormService.containerArray.push(newContainerSpec);
     console.log("Container Array : ", this.dashboardFormService.containerArray);
   }
 
   activateContainer(index: any) {
-    console.log("On Double Click !")
+    console.log("On Click Container !")
     this.dashboardFormService.selectedContainerIndex = index;
     this.selectedIndex = index;
-    console.log("Container Index : ", this.dashboardFormService.selectedContainerIndex)
   }
 }

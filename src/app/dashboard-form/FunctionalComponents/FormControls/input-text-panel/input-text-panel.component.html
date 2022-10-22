@@ -6,6 +6,7 @@
         style="height: 23px" 
         class="itl-fs-12 itl-input-background ps-1 pe-1"
         [ngClass]="settings.width"
+        (change)="changeValue($event)"
         [value]="settings.formGroup.get(settings.fieldName)?.value"/>
     </div>
 </div>

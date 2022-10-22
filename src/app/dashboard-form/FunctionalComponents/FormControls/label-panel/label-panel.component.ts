@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-export interface ILabel{
+export interface ILabel {
   title: string;
   fieldName: string;
   formGroup: FormGroup;
@@ -15,6 +15,7 @@ export class LabelPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("Label Panel Setting : ", this.settings);
   }
 
 }

@@ -39,10 +39,10 @@
                     </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
-                    <itl-input-text-panel [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100'}"></itl-input-text-panel>
+                    <itl-input-text-panel [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}"></itl-input-text-panel>
                 </div>
                 <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
-                    <itl-label-panel [settings]="{title: 'Type', fieldName: 'type', formGroup: containerSpecControlForm}"></itl-label-panel>
+                    <itl-label-panel [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm }"></itl-label-panel>
                 </div>
                 <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
                         <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true" (closed)="panelOpenContentState = false" hideToggle="true">
@@ -52,10 +52,10 @@
                                 <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle</mat-icon>
                             </mat-expansion-panel-header>
                             <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-input-text-panel [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100'}"></itl-input-text-panel>
+                                <itl-input-text-panel [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}"></itl-input-text-panel>
                             </div>
                             <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-label-panel [settings]="{title: 'Type', fieldName: 'type', formGroup: containerSpecControlForm}"></itl-label-panel>
+                                <itl-label-panel [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm}"></itl-label-panel>
                             </div>
                         </mat-expansion-panel>
                 </div>
@@ -67,13 +67,13 @@
                                 <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle</mat-icon>
                             </mat-expansion-panel-header>
                             <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-input-text-panel [settings]="{title: 'Width', fieldName: 'width', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
+                                <itl-input-text-panel [settings]="{title: 'Width', fieldName: 'width', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
                             </div>
                             <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-input-text-panel [settings]="{title: 'Height', fieldName: 'height', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
+                                <itl-input-text-panel [settings]="{title: 'Height', fieldName: 'height', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
                             </div>
                             <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-input-text-panel [settings]="{title: 'X from left', fieldName: 'left', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
+                                <itl-input-text-panel [settings]="{title: 'X from left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
                             </div>
                             <div class="ps-3 pe-3 pb-1 pt-1">
                                 <itl-switcher-toggle [settings]="{title: 'Lock Display Size. W:360px-H:108px', fieldName: 'isDispalySizeLockedText', formGroup: containerSpecControlForm, labelLeft: 'ON', labelRight: 'OFF'}"></itl-switcher-toggle>
