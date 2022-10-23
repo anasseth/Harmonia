@@ -1,0 +1,17 @@
+::ng-deep .itl-panel-lbel .mat-expansion-panel-content {
+    font-size: 12px !important;
+}
+
+.btn-style-adjustment {
+    font-size: 12px;
+    height: 31px;
+    border-bottom: 1px solid black;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-style-adjustment:hover {
+    border-bottom: 1px solid grey;
+    color: grey;
+    transition-duration: 0.5s;
+}
