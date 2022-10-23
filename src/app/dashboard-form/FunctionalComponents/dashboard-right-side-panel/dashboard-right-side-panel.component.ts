@@ -62,8 +62,9 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
   /* Add text container */
   addContainer(selector: any) {
     this.selector = selector;
-    this.selectorName = selectorData.filter((x) => x.selectorId == selector)[0].selectorName
-    this.onCreateNewContainer.emit(this.containerSpecControlForm.value);
+    this.selectorName = selectorData.filter((x) => x.selectorId == selector)[0].selectorName;
+    this.containerSpecControlForm.controls['pageContainerType'].setValue(this.selectorName);
+    this.onCreateNewContainer.emit(this.selectorName);
   }
 
   generateForm() {

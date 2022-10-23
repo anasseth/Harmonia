@@ -35,7 +35,7 @@
 
 
             <!-- Text settings -->
-            <div class="text-settings" *ngIf="selector===1">
+            <div class="text-settings" *ngIf="containerSpecControlForm.controls['pageContainerType'].value === 'Text'">
                 <mat-expansion-panel class="rounded-0 itl-mat-expansion-panel">
 
                     <mat-expansion-panel-header style="height: 38px">
@@ -177,7 +177,7 @@
             </div>
 
             <!-- Image settings -->
-            <div *ngIf="selector===2">
+            <div *ngIf="containerSpecControlForm.controls['pageContainerType'].value === 'Image'">
                 <mat-expansion-panel class="rounded-0">
                     <mat-expansion-panel-header style="height: 38px">
                         <mat-panel-title>
@@ -319,7 +319,7 @@
             
             
             <!-- Charts settings -->
-            <div *ngIf="selector===3">
+            <div *ngIf="containerSpecControlForm.controls['pageContainerType'].value === 'Chart'">
                 <mat-expansion-panel class="rounded-0">
                     <mat-expansion-panel-header style="height: 38px">
                         <mat-panel-title>
@@ -460,11 +460,11 @@
 
 
              <!-- Embeded Container settings -->
-             <div *ngIf="selector===4">
+             <div *ngIf="containerSpecControlForm.controls['pageContainerType'].value === 'Embed'">
                 <mat-expansion-panel class="rounded-0">
                     <mat-expansion-panel-header style="height: 38px">
                         <mat-panel-title>
-                            Embeded settings
+                            Embeded Container settings
                         </mat-panel-title>
                     </mat-expansion-panel-header>
 
