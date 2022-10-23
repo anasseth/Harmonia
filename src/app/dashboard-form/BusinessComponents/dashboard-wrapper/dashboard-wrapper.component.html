@@ -13,10 +13,20 @@
         <div class="position-absolute" style="width:100%;height:100%;top:0%;left:0%;background-color: rgb(0, 0, 0);">
             <div *ngFor="let container of this.dashboardFormService.containerArray; let i = index" class="resizable"
                 [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeContainer' : ''"
-                (click)="activateContainer(container.containerIndex)" [ngStyle]="{'z-index':isNavigatedAway?0:3}"
+                (click)="activateContainer(container.containerIndex)" 
+                [ngStyle]="{'z-index':isNavigatedAway? 0 : 3}"
                 [style.transform]="'translate3d(' + container.containerPosition.left + 'px,' + container.containerPosition.top + 'px,' + '0px)'"
                 [style.width.px]="container.containerPosition.width"
-                [style.height.px]="container.containerPosition.height" (mousedown)="setStatus($event, 2, null, i)"
+                [style.height.px]="container.containerPosition.height" 
+                (mousedown)="setStatus($event, 2, null, i)"
+                [style]="{
+                    paddingTop:container.containerPadding.top+'px',
+                    paddingRight:container.containerPadding.right+'px',
+                    paddingLeft:container.containerPadding.left+'px',
+                    paddingBottom:container.containerPadding.bottom+'px',
+                    opacity:container.opacity,
+                    backgroundColor:container.backgroundColor
+                }"
                 (window:mouseup)="setStatus($event, 0, null, i)">
                 <div class="cursor-1 resizer top-left"
                     [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"

@@ -76,6 +76,8 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
         name: ['Untitled'],
         pageContainerType: [this.selectorName],
         tag: [''],
+        backgroundColor: ['#ffffff'],
+        opacity: [0.15],
         containerPosition: this.fb.group(
           {
             top: [0],
@@ -84,7 +86,7 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
             left: [0]
           }
         ),
-        ContainerPadding: this.fb.group(
+        containerPadding: this.fb.group(
           {
             top: [0],
             bottom: [0],

@@ -7,10 +7,6 @@
   background-color: rgba(50, 50, 50, 0.5);
 }
 
-::ng-deep .mat-drawer {
-  /*   z-index: 100 !important; */
-}
-
 element.style {
   margin-left: 101px;
 }
@@ -60,13 +56,16 @@ p {
   width: 350px;
   height: 200px;
   border: 1px dashed rgb(255, 255, 255);
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: #ffffff;
+  opacity: 0.15;
   cursor: move;
   z-index: 3;
 }
 
 .activeContainer {
-  border: 1px dashed rgb(0 225 255);
+  border: 1px dashed rgb(0 225 255) !important;
+  background-color: rgba(0, 225, 255, 0.163) !important;
+  opacity: 1 !important;
 }
 
 .resizer {
@@ -80,7 +79,8 @@ p {
   position: absolute;
   width: 15px;
   height: 15px;
-  background-color: rgb(0 225 255);
+  background-color: rgba(0, 225, 255, 0.163) !important;
+  opacity: 1 !important;
 }
 
 .top-left {
@@ -106,21 +106,3 @@ p {
   right: 0px;
   bottom: 0px;
 }
-
-/* .add-btn {
-  background-color: rgb(78, 78, 252);
-  color: white;
-  position: fixed;
-  top: 20px;
-  width: 150px;
-  height: 50px;
-  border-radius: 20px;
-  outline: none;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-  font-weight: 500;
-}
- */

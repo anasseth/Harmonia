@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, NgZone, HostListener } from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { DashBoardFormService } from '../../services/dashboard-form.service';
-import { Observable } from 'rxjs';
 import { NavigationEnd, Router } from '@angular/router';
 
 const enum Status {
@@ -17,6 +16,7 @@ const enum Status {
 export class DashboardWrapperComponent implements OnInit {
   isNavigatedAway: boolean = true;
   boxArray: any = []
+  a:number=30;
 
   index = -1;
   selectedIndex = -1;
@@ -152,6 +152,8 @@ export class DashboardWrapperComponent implements OnInit {
       name: "Untitled",
       pageContainerType: "Text",
       tag: "",
+      backgroundColor: '#ffffff',
+      opacity: 0.15,
       containerPosition: {
         top: 0,
         left: 0,
@@ -160,11 +162,11 @@ export class DashboardWrapperComponent implements OnInit {
         height: 250,
         width: 250,
       },
-      ContainerPadding: {
-        top: 0,
-        bottom: 0,
-        right: 0,
-        left: 0
+      containerPadding: {
+        top: 10,
+        bottom: 20,
+        right: 30,
+        left: 40
       }
     }
 

@@ -1,119 +1,604 @@
-<mat-accordion [togglePosition]="'before'"  multi>
-<div>
-    <form [formGroup]="containerSpecControlForm">
-        <mat-expansion-panel class="rounded-0" [expanded]="true">
-            <mat-expansion-panel-header style="height: 38px">
-                <mat-panel-title>
-                    Container type
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="itl-background-1c1e20 itl-custom-icons itl-padding-left-20">
-                <div class="d-flex justify-content-start">
-                    <div class="itl-cursor-pointer" (click)="addContainer(1)">
-                        <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===1}">title</mat-icon>
-                        <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Text</div>
-                    </div>
-                    <div class="itl-cursor-pointer" (click)="addContainer(2)">
-                        <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===2}">image</mat-icon>
-                        <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Image</div>
-                    </div>
-                    <div class="itl-cursor-pointer" (click)="addContainer(3)">
-                        <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===3}"> bar_chart</mat-icon>
-                        <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Chart</div>
-                    </div>
-                    <div class="itl-cursor-pointer" (click)="addContainer(4)" [ngClass]="{'itl-color-e36c26': selector===4}">
-                        <mat-icon class="itl-icon-custom mb-1" >crop_rotate</mat-icon>
-                        <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Embed</div>
-                    </div>
-                </div>
-            </div>
-        </mat-expansion-panel>
-
-
-    <!-- Text settings -->
-    <div class="text-settings" *ngIf="selector===1">
-            <mat-expansion-panel class="rounded-0 itl-mat-expansion-panel">
+<mat-accordion [togglePosition]="'before'" multi>
+    <div>
+        <form [formGroup]="containerSpecControlForm">
+            <mat-expansion-panel class="rounded-0" [expanded]="true">
                 <mat-expansion-panel-header style="height: 38px">
                     <mat-panel-title>
-                        General settings
+                        Container type
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
-                    <itl-input-text-panel [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}"></itl-input-text-panel>
-                </div>
-                <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
-                    <itl-label-panel [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm }"></itl-label-panel>
-                </div>
-                <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
-                        <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true" (closed)="panelOpenContentState = false" hideToggle="true">
-                            <mat-expansion-panel-header class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
-                                <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
-                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle</mat-icon>
-                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle</mat-icon>
-                            </mat-expansion-panel-header>
-                            <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-input-text-panel [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}"></itl-input-text-panel>
-                            </div>
-                            <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-label-panel [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm}"></itl-label-panel>
-                            </div>
-                        </mat-expansion-panel>
-                </div>
-                <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
-                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true" (closed)="panelOpenContentState = false" hideToggle="true">
-                            <mat-expansion-panel-header class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
-                                <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
-                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle</mat-icon>
-                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle</mat-icon>
-                            </mat-expansion-panel-header>
-                            <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-input-text-panel [settings]="{title: 'Width', fieldName: 'width', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
-                            </div>
-                            <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-input-text-panel [settings]="{title: 'Height', fieldName: 'height', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
-                            </div>
-                            <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-input-text-panel [settings]="{title: 'X from left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}"></itl-input-text-panel>
-                            </div>
-                            <div class="ps-3 pe-3 pb-1 pt-1">
-                                <itl-switcher-toggle [settings]="{title: 'Lock Display Size. W:360px-H:108px', fieldName: 'isDispalySizeLockedText', formGroup: containerSpecControlForm, labelLeft: 'ON', labelRight: 'OFF'}"></itl-switcher-toggle>
-                            </div>
-                        </mat-expansion-panel>
-                </div>
-            </mat-expansion-panel>
-    </div>
-
-    <!-- Image settings -->
-    <div *ngIf="selector===2">
-            <mat-expansion-panel class="rounded-0">
-                <mat-expansion-panel-header style="height: 38px">
-                    <mat-panel-title>
-                        General settings
-                    </mat-panel-title>
-                </mat-expansion-panel-header>
-                <div class="itl-background-1c1e20 itl-custom-icons">
+                <div class="itl-background-1c1e20 itl-custom-icons itl-padding-left-20">
                     <div class="d-flex justify-content-start">
-                        <div class="itl-cursor-pointer">
-                            <mat-icon class="itl-icon-custom me-3 mb-1 "> title</mat-icon>
-                            <div class="ITL_IcoGroup_Selection itl-icoGroup_selection">Text</div>
+                        <div class="itl-cursor-pointer" (click)="addContainer(1)">
+                            <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===1}">
+                                title</mat-icon>
+                            <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Text</div>
                         </div>
-                        <div class="itl-cursor-pointer">
-                            <mat-icon class="itl-icon-custom me-3 mb-1 ">image</mat-icon>
-                            <div class="ITL_IcoGroup_Selection itl-icoGroup_selection">Image</div>
+                        <div class="itl-cursor-pointer" (click)="addContainer(2)">
+                            <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===2}">
+                                image</mat-icon>
+                            <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Image</div>
                         </div>
-                        <div class="itl-cursor-pointer">
-                            <mat-icon class="itl-icon-custom me-3 mb-1 "> bar_chart</mat-icon>
-                            <div class="ITL_IcoGroup_Selection itl-icoGroup_selection">Chart</div>
+                        <div class="itl-cursor-pointer" (click)="addContainer(3)">
+                            <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===3}">
+                                bar_chart</mat-icon>
+                            <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Chart</div>
                         </div>
-                        <div class="itl-cursor-pointer">
+                        <div class="itl-cursor-pointer" (click)="addContainer(4)"
+                            [ngClass]="{'itl-color-e36c26': selector===4}">
                             <mat-icon class="itl-icon-custom mb-1">crop_rotate</mat-icon>
-                            <div class="ITL_IcoGroup_Selection itl-icoGroup_selection">Embed</div>
+                            <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Embed</div>
                         </div>
                     </div>
                 </div>
             </mat-expansion-panel>
-    </div>
 
-</form>
-</div>
+
+            <!-- Text settings -->
+            <div class="text-settings" *ngIf="selector===1">
+                <mat-expansion-panel class="rounded-0 itl-mat-expansion-panel">
+
+                    <mat-expansion-panel-header style="height: 38px">
+                        <mat-panel-title>
+                            Text Container settings
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
+                        <itl-input-text-panel
+                            [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}">
+                        </itl-input-text-panel>
+                    </div>
+
+                    <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
+                        <itl-label-panel
+                            [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm }">
+                        </itl-label-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-label-panel
+                                    [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm}">
+                                </itl-label-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Width', fieldName: 'width', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Height', fieldName: 'height', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'X from left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-switcher-toggle
+                                    [settings]="{title: 'Lock Display Size. W:360px-H:108px', fieldName: 'isDispalySizeLockedText', formGroup: containerSpecControlForm, labelLeft: 'ON', labelRight: 'OFF'}">
+                                </itl-switcher-toggle>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Padding</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Top', fieldName: 'top', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Right', fieldName: 'right', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Bottom', fieldName: 'bottom', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Background</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Color', fieldName: 'backgroundColor', valueType: 'String' , formGroup: containerSpecControlForm, width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Opacity', fieldName: 'opacity', valueType: 'Number' , formGroup: containerSpecControlForm, width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                </mat-expansion-panel>
+
+            </div>
+
+            <!-- Image settings -->
+            <div *ngIf="selector===2">
+                <mat-expansion-panel class="rounded-0">
+                    <mat-expansion-panel-header style="height: 38px">
+                        <mat-panel-title>
+                            Image Container settings
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
+                        <itl-input-text-panel
+                            [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}">
+                        </itl-input-text-panel>
+                    </div>
+
+                    <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
+                        <itl-label-panel
+                            [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm }">
+                        </itl-label-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-label-panel
+                                    [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm}">
+                                </itl-label-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Width', fieldName: 'width', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Height', fieldName: 'height', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'X from left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-switcher-toggle
+                                    [settings]="{title: 'Lock Display Size. W:360px-H:108px', fieldName: 'isDispalySizeLockedText', formGroup: containerSpecControlForm, labelLeft: 'ON', labelRight: 'OFF'}">
+                                </itl-switcher-toggle>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Padding</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Top', fieldName: 'top', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Right', fieldName: 'right', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Bottom', fieldName: 'bottom', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Background</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Color', fieldName: 'backgroundColor', valueType: 'String' , formGroup: containerSpecControlForm, width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Opacity', fieldName: 'opacity', valueType: 'Number' , formGroup: containerSpecControlForm, width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                </mat-expansion-panel>
+            </div>
+
+            
+            
+            <!-- Charts settings -->
+            <div *ngIf="selector===3">
+                <mat-expansion-panel class="rounded-0">
+                    <mat-expansion-panel-header style="height: 38px">
+                        <mat-panel-title>
+                            Chart Container settings
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
+                        <itl-input-text-panel
+                            [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}">
+                        </itl-input-text-panel>
+                    </div>
+
+                    <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
+                        <itl-label-panel
+                            [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm }">
+                        </itl-label-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-label-panel
+                                    [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm}">
+                                </itl-label-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Width', fieldName: 'width', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Height', fieldName: 'height', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'X from left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-switcher-toggle
+                                    [settings]="{title: 'Lock Display Size. W:360px-H:108px', fieldName: 'isDispalySizeLockedText', formGroup: containerSpecControlForm, labelLeft: 'ON', labelRight: 'OFF'}">
+                                </itl-switcher-toggle>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                                        <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Padding</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Top', fieldName: 'top', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Right', fieldName: 'right', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Bottom', fieldName: 'bottom', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Background</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Color', fieldName: 'backgroundColor', valueType: 'String' , formGroup: containerSpecControlForm, width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Opacity', fieldName: 'opacity', valueType: 'Number' , formGroup: containerSpecControlForm, width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                </mat-expansion-panel>
+            </div>
+
+
+             <!-- Embeded Container settings -->
+             <div *ngIf="selector===4">
+                <mat-expansion-panel class="rounded-0">
+                    <mat-expansion-panel-header style="height: 38px">
+                        <mat-panel-title>
+                            Embeded settings
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
+                        <itl-input-text-panel
+                            [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}">
+                        </itl-input-text-panel>
+                    </div>
+
+                    <div class="itl-height-38 ps-3 pe-3 pb-1 pt-1">
+                        <itl-label-panel
+                            [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm }">
+                        </itl-label-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Name', fieldName: 'name', formGroup: containerSpecControlForm, width: 'w-100', valueType: 'String'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-label-panel
+                                    [settings]="{title: 'Type', fieldName: 'pageContainerType', formGroup: containerSpecControlForm}">
+                                </itl-label-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Width', fieldName: 'width', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Height', fieldName: 'height', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'X from left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPosition'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-switcher-toggle
+                                    [settings]="{title: 'Lock Display Size. W:360px-H:108px', fieldName: 'isDispalySizeLockedText', formGroup: containerSpecControlForm, labelLeft: 'ON', labelRight: 'OFF'}">
+                                </itl-switcher-toggle>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Padding</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Top', fieldName: 'top', valueType: 'Number' , formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Right', fieldName: 'right', valueType: 'Number',formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Bottom', fieldName: 'bottom', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Left', fieldName: 'left', valueType: 'Number', formGroup: containerSpecControlForm.get('containerPadding'), width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Background</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Color', fieldName: 'backgroundColor', valueType: 'String' , formGroup: containerSpecControlForm, width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-input-text-panel
+                                    [settings]="{title: 'Opacity', fieldName: 'opacity', valueType: 'Number' , formGroup: containerSpecControlForm, width: 'w-50'}">
+                                </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                </mat-expansion-panel>
+            </div>
+
+        </form>
+    </div>
 </mat-accordion>
