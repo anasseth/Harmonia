@@ -23,7 +23,7 @@ export class InputTextPanelComponent implements OnInit {
   changeValue(event: any) {
     console.log(event.target.value)
     this.settings.formGroup.controls[this.settings?.fieldName].setValue(
-      this.settings.valueType == 'Number' ? Number(event.target.value) : event.target.value
+      this.settings.valueType == 'Number' && event.target.value >= 0 ? Math.abs(Number(event.target.value)) : (this.settings.valueType == 'Number' && event.target.value < 0) ? 0 : event.target.value
     )
   }
 

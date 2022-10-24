@@ -59,6 +59,7 @@ export class DashboardWrapperComponent implements OnInit {
     this.matDrawer.toggle();
     this.statusType = this.matDrawer.opened ? 'new' : 'load';
     console.log(this.matDrawer.opened);
+    this.propertyChanged(false);
   }
 
   topLeftResize(offsetX: number, offsetY: number) {
@@ -67,6 +68,7 @@ export class DashboardWrapperComponent implements OnInit {
       this.dashboardFormService.containerArray[this.index].containerPosition.top += offsetY;
       this.dashboardFormService.containerArray[this.index].containerPosition.width -= offsetX;
       this.dashboardFormService.containerArray[this.index].containerPosition.height -= offsetY;
+      // this.propertyChanged(true);
     }
   }
 
@@ -75,6 +77,7 @@ export class DashboardWrapperComponent implements OnInit {
       this.dashboardFormService.containerArray[this.index].containerPosition.top += offsetY;
       this.dashboardFormService.containerArray[this.index].containerPosition.width += offsetX;
       this.dashboardFormService.containerArray[this.index].containerPosition.height -= offsetY;
+      // this.propertyChanged(true);
     }
   }
 
@@ -83,6 +86,7 @@ export class DashboardWrapperComponent implements OnInit {
       this.dashboardFormService.containerArray[this.index].containerPosition.left += offsetX;
       this.dashboardFormService.containerArray[this.index].containerPosition.width -= offsetX;
       this.dashboardFormService.containerArray[this.index].containerPosition.height += offsetY;
+      // this.propertyChanged(true);
     }
   }
 
@@ -90,6 +94,7 @@ export class DashboardWrapperComponent implements OnInit {
     if (this.matDrawer.opened) {
       this.dashboardFormService.containerArray[this.index].containerPosition.width += offsetX;
       this.dashboardFormService.containerArray[this.index].containerPosition.height += offsetY;
+      // this.propertyChanged(true);
     }
   }
 
@@ -126,6 +131,7 @@ export class DashboardWrapperComponent implements OnInit {
   @HostListener("document:mouseup", ["$event"])
   onCornerRelease(event: MouseEvent) {
     this.draggingCorner = false;
+    this.propertyChanged(false);
   }
 
   setStatus(event: MouseEvent, status: number, func: any, index: any) {
@@ -168,6 +174,7 @@ export class DashboardWrapperComponent implements OnInit {
       tag: "",
       backgroundColor: '#ffffff',
       opacity: 0.15,
+      zIndex: this.dashboardFormService.containerArray.length == 0 ? 2 : this.dashboardFormService.containerArray.length + 1,
       containerPosition: {
         top: 0,
         left: 0,
@@ -192,5 +199,9 @@ export class DashboardWrapperComponent implements OnInit {
     console.log("On Click Container !")
     this.dashboardFormService.selectedContainerIndex = index;
     this.selectedIndex = index;
+  }
+
+  propertyChanged(params:boolean){
+    this.dashboardFormService.containerPropertyUpdated.next(params);
   }
 }

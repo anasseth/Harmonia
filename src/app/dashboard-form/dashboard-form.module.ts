@@ -14,6 +14,7 @@ import { LabelPanelComponent } from './FunctionalComponents/FormControls/label-p
 import { SwitcherToggleComponent } from './FunctionalComponents/FormControls/switcher-toggle/switcher-toggle.component';
 import { ContainerComponent } from './FunctionalComponents/container/container.component';
 import { MaterialDesignModule } from '../material/material.module';
+import { ButtonSelectionComponent } from './FunctionalComponents/FormControls/button-selection/button-selection.component';
 
 const routes: Routes = [{ path: '', component: DashboardWrapperComponent },];
 
@@ -30,7 +31,7 @@ const routes: Routes = [{ path: '', component: DashboardWrapperComponent },];
         DashboardRightSidePanelComponent, 
         DashboardViewComponent, 
         TitleAccordionComponent, 
-        InputTextPanelComponent, LabelPanelComponent, SwitcherToggleComponent, ContainerComponent
+        InputTextPanelComponent, LabelPanelComponent, SwitcherToggleComponent, ContainerComponent, ButtonSelectionComponent
     ],
     // providers: [StoryActions]
 })

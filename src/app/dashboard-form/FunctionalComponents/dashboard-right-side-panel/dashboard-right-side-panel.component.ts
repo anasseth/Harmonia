@@ -18,10 +18,10 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
   panelForm!: FormGroup;
   containerSpecControlForm!: FormGroup;
   panelOpenContentState: boolean = false;
-  private dashboardFormService: DashBoardFormService;
+  public dashboardFormService: DashBoardFormService;
 
   constructor(
-    private _dashboardFormService: DashBoardFormService,
+    public _dashboardFormService: DashBoardFormService,
     public fb: FormBuilder
   ) {
     this.dashboardFormService = _dashboardFormService;
@@ -30,7 +30,6 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.generateForm();
     this.dashboardFormService.onUploadDashboard.subscribe((x) => {
-      //this.accordion.closeAll();
     })
     if (this.selectedIndex == -1) {
     }
@@ -38,14 +37,19 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
       this.containerSpecControlForm.patchValue(
         this.dashboardFormService.containerArray[this.selectedIndex]
       )
-      // console.log("Form Updated : ", this.containerSpecControlForm.value);
     }
 
     this.containerSpecControlForm.valueChanges.subscribe(
       (changes) => {
-        console.log("Form Updated : ", JSON.stringify(changes))
         this.dashboardFormService.containerArray[this.selectedIndex] = changes
-        console.log(this.dashboardFormService.containerArray)
+        // console.log(this.dashboardFormService.containerArray)
+      }
+    )
+    this.dashboardFormService.containerPropertyUpdated.subscribe(
+      (res: boolean) => {
+        this.containerSpecControlForm.patchValue(
+          this.dashboardFormService.containerArray[this.selectedIndex]
+        )
       }
     )
   }
@@ -73,12 +77,13 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
       {
         pageID: [0],
         pageContainerID: [0],
-        containerIndex:[0],
+        containerIndex: [0],
         name: ['Untitled'],
         pageContainerType: [this.selectorName],
         tag: [''],
         backgroundColor: ['#ffffff'],
         opacity: [0.15],
+        zIndex: [1],
         containerPosition: this.fb.group(
           {
             top: [0],

@@ -14,7 +14,7 @@
             <div *ngFor="let container of this.dashboardFormService.containerArray; let i = index" class="resizable"
                 [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeContainer' : ''"
                 (click)="activateContainer(container.containerIndex)" 
-                [ngStyle]="{'z-index':isNavigatedAway? 0 : 3}"
+                [ngStyle]="{'z-index':isNavigatedAway? 0 : container.zIndex}"
                 [style.transform]="'translate3d(' + container.containerPosition.left + 'px,' + container.containerPosition.top + 'px,' + '0px)'"
                 [style.width.px]="container.containerPosition.width"
                 [style.height.px]="container.containerPosition.height" 
@@ -25,7 +25,8 @@
                     paddingLeft:container.containerPadding.left+'px',
                     paddingBottom:container.containerPadding.bottom+'px',
                     opacity:container.opacity,
-                    backgroundColor:container.backgroundColor
+                    backgroundColor:container.backgroundColor,
+                    zIndex: container.zIndex
                 }"
                 (window:mouseup)="setStatus($event, 0, null, i)">
                 <div class="cursor-1 resizer top-left"

@@ -7,25 +7,28 @@
                         Container type
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <div class="itl-background-1c1e20 itl-custom-icons itl-padding-left-20">
+                <div class="itl-background-1c1e20 itl-custom-icons itl-padding-left-10">
                     <div class="d-flex justify-content-start">
                         <div class="itl-cursor-pointer" (click)="addContainer(1)">
-                            <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===1}">
+                            <mat-icon class="itl-icon-custom me-3 mb-1"
+                                [ngClass]="{'itl-color-e36c26': selector===1 || containerSpecControlForm.controls['pageContainerType'].value==='Text'}">
                                 title</mat-icon>
                             <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Text</div>
                         </div>
                         <div class="itl-cursor-pointer" (click)="addContainer(2)">
-                            <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===2}">
+                            <mat-icon class="itl-icon-custom me-3 mb-1"
+                                [ngClass]="{'itl-color-e36c26': selector===2 || containerSpecControlForm.controls['pageContainerType'].value==='Image'}">
                                 image</mat-icon>
                             <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Image</div>
                         </div>
                         <div class="itl-cursor-pointer" (click)="addContainer(3)">
-                            <mat-icon class="itl-icon-custom me-3 mb-1" [ngClass]="{'itl-color-e36c26': selector===3}">
+                            <mat-icon class="itl-icon-custom me-3 mb-1"
+                                [ngClass]="{'itl-color-e36c26': selector===3 || containerSpecControlForm.controls['pageContainerType'].value==='Chart'}">
                                 bar_chart</mat-icon>
                             <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Chart</div>
                         </div>
                         <div class="itl-cursor-pointer" (click)="addContainer(4)"
-                            [ngClass]="{'itl-color-e36c26': selector===4}">
+                            [ngClass]="{'itl-color-e36c26': selector===4 || containerSpecControlForm.controls['pageContainerType'].value==='Embed'}">
                             <mat-icon class="itl-icon-custom mb-1">crop_rotate</mat-icon>
                             <div class="itl-line-height-20 itl-color-868686 itl-fs-11">Embed</div>
                         </div>
@@ -60,7 +63,7 @@
                         <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -84,7 +87,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -118,7 +121,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Padding</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -152,7 +155,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Background</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -168,6 +171,40 @@
                                 <itl-input-text-panel
                                     [settings]="{title: 'Opacity', fieldName: 'opacity', valueType: 'Number' , formGroup: containerSpecControlForm, width: 'w-50'}">
                                 </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Arrange</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send to Front', fieldName: 'zIndex', formGroup: containerSpecControlForm, actionType:'max', value:this.dashboardFormService.containerArray.length+1}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Bring Forward', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'increment'}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send Backward', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'decrement'}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send to Back', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'min', value: 2}">
+                                </itl-button-selection>
                             </div>
                         </mat-expansion-panel>
                     </div>
@@ -201,7 +238,7 @@
                         <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -225,7 +262,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -259,7 +296,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Padding</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -293,7 +330,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Background</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -313,11 +350,45 @@
                         </mat-expansion-panel>
                     </div>
 
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Arrange</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send to Front', fieldName: 'zIndex', formGroup: containerSpecControlForm, actionType:'max', value:this.dashboardFormService.containerArray.length+1}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Bring Forward', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'increment'}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send Backward', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'decrement'}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send to Back', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'min', value: 2}">
+                                </itl-button-selection>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
                 </mat-expansion-panel>
             </div>
 
-            
-            
+
+
             <!-- Charts settings -->
             <div *ngIf="containerSpecControlForm.controls['pageContainerType'].value === 'Chart'">
                 <mat-expansion-panel class="rounded-0">
@@ -343,7 +414,7 @@
                         <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -367,7 +438,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -397,11 +468,11 @@
                         </mat-expansion-panel>
                     </div>
 
-                                        <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Padding</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -435,7 +506,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Background</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -455,12 +526,46 @@
                         </mat-expansion-panel>
                     </div>
 
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Arrange</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send to Front', fieldName: 'zIndex', formGroup: containerSpecControlForm, actionType:'max', value:this.dashboardFormService.containerArray.length+1}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Bring Forward', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'increment'}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send Backward', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'decrement'}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send to Back', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'min', value: 2}">
+                                </itl-button-selection>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
                 </mat-expansion-panel>
             </div>
 
 
-             <!-- Embeded Container settings -->
-             <div *ngIf="containerSpecControlForm.controls['pageContainerType'].value === 'Embed'">
+            <!-- Embeded Container settings -->
+            <div *ngIf="containerSpecControlForm.controls['pageContainerType'].value === 'Embed'">
                 <mat-expansion-panel class="rounded-0">
                     <mat-expansion-panel-header style="height: 38px">
                         <mat-panel-title>
@@ -484,7 +589,7 @@
                         <mat-expansion-panel class="rounded-0  shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Content</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -508,7 +613,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Size & position</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -542,7 +647,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Padding</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -576,7 +681,7 @@
                         <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
                             (closed)="panelOpenContentState = false" hideToggle="true">
                             <mat-expansion-panel-header
-                                class="itl-height-36 itl-padding-left-20 itl-padding-right-20 itl-sub-accordion">
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
                                 <div class="colour-e5e5e5 w-50 fw-bold">Background</div>
                                 <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
                                 </mat-icon>
@@ -592,6 +697,40 @@
                                 <itl-input-text-panel
                                     [settings]="{title: 'Opacity', fieldName: 'opacity', valueType: 'Number' , formGroup: containerSpecControlForm, width: 'w-50'}">
                                 </itl-input-text-panel>
+                            </div>
+                        </mat-expansion-panel>
+                    </div>
+
+                    <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+                        <mat-expansion-panel class="rounded-0 shadow-none" (opened)="panelOpenContentState = true"
+                            (closed)="panelOpenContentState = false" hideToggle="true">
+                            <mat-expansion-panel-header
+                                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion">
+                                <div class="colour-e5e5e5 w-50 fw-bold">Arrange</div>
+                                <mat-icon *ngIf="!panelOpenContentState" class="itl-color-icon-custom">add_circle
+                                </mat-icon>
+                                <mat-icon *ngIf="panelOpenContentState" class="itl-color-icon-custom">remove_circle
+                                </mat-icon>
+                            </mat-expansion-panel-header>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send to Front', fieldName: 'zIndex', formGroup: containerSpecControlForm, actionType:'max', value:this.dashboardFormService.containerArray.length+1}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Bring Forward', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'increment'}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send Backward', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'decrement'}">
+                                </itl-button-selection>
+                            </div>
+                            <div class="ps-3 pe-3 pb-1 pt-1">
+                                <itl-button-selection
+                                    [settings]="{title: 'Send to Back', fieldName: 'zIndex' , formGroup: containerSpecControlForm, actionType:'min', value: 2}">
+                                </itl-button-selection>
                             </div>
                         </mat-expansion-panel>
                     </div>
