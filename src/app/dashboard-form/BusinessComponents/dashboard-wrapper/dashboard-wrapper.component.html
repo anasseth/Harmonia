@@ -75,7 +75,7 @@
         </div>
     </div>
     <mat-drawer-container class="itl-drawer-container position-absolute">
-        <mat-drawer #drawer [mode]="mode.value" position="end" [opened]="statusType==='new'" style="width: 263px">
+        <mat-drawer #drawer [mode]="mode.value" position="end" [opened]="statusType==='new'" style="width: 263px" class="drawer-scroll">
             <itl-dashboard-right-side-panel (onCreateNewContainer)="createNewContainer($event)"
                 [selectedIndex]="this.selectedIndex">
             </itl-dashboard-right-side-panel>

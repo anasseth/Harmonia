@@ -109,3 +109,22 @@ p {
   right: 0px;
   bottom: 0px;
 }
+
+::ng-deep
+  .drawer-scroll
+  > .mat-drawer-inner-container::-webkit-scrollbar {
+  width: 2px;
+}
+
+::ng-deep
+  .drawer-scroll
+  > .mat-drawer-inner-container::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::ng-deep
+  .drawer-scroll
+  > .mat-drawer-inner-container::-webkit-scrollbar-thumb {
+  background-color: rgb(147, 147, 147);
+  outline: 1px solid rgb(89, 89, 89);
+}
