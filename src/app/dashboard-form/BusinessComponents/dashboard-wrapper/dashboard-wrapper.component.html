@@ -20,27 +20,49 @@
                 [style.height.px]="container.containerPosition.height" 
                 (mousedown)="setStatus($event, 2, null, i)"
                 [style]="{
-                    paddingTop:container.containerPadding.top+'px',
-                    paddingRight:container.containerPadding.right+'px',
-                    paddingLeft:container.containerPadding.left+'px',
-                    paddingBottom:container.containerPadding.bottom+'px',
-                    opacity:container.opacity,
-                    backgroundColor:container.backgroundColor,
                     zIndex: container.zIndex
                 }"
                 (window:mouseup)="setStatus($event, 0, null, i)">
                 <div class="cursor-1 resizer top-left"
                     [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"
-                    (mousedown)="setStatus($event, 1, topLeftResize, i)"></div>
+                    (mousedown)="setStatus($event, 1, topLeftResize, i)"
+                    [style]="{
+                        zIndex: container.zIndex + 1
+                    }"
+                    ></div>
                 <div class="cursor-2 resizer top-right"
                     [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"
-                    (mousedown)="setStatus($event, 1, topRightResize, i)"></div>
+                    (mousedown)="setStatus($event, 1, topRightResize, i)"
+                    [style]="{
+                        zIndex: container.zIndex + 1
+                    }"
+                    ></div>
                 <div class="cursor-4 resizer bottom-left"
                     [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"
-                    (mousedown)="setStatus($event, 1, bottomLeftResize, i)"></div>
+                    (mousedown)="setStatus($event, 1, bottomLeftResize, i)"
+                    [style]="{
+                        zIndex: container.zIndex + 1
+                    }"
+                    ></div>
                 <div class="cursor-3 resizer bottom-right"
                     [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"
-                    (mousedown)="setStatus($event, 1, bottomRightResize, i)">
+                    (mousedown)="setStatus($event, 1, bottomRightResize, i)"
+                    [style]="{
+                        zIndex: container.zIndex + 1
+                    }"
+                    >
+                </div>
+                <div 
+                [style]="{
+                paddingTop:container.containerPadding.top+'px',
+                paddingRight:container.containerPadding.right+'px',
+                paddingLeft:container.containerPadding.left+'px',
+                paddingBottom:container.containerPadding.bottom+'px',
+                opacity:container.opacity,
+                backgroundColor:container.backgroundColor}" 
+                class="w-100 h-100"
+                >
+
                 </div>
             </div>
         </div>

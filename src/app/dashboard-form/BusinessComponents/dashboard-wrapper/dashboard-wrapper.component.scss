@@ -18,6 +18,7 @@ element.style {
 
 :host ::ng-deep .mat-drawer-inner-container {
   background-color: var(--background-6) !important;
+  background-color: white !important;
 }
 
 .mat-drawer-content {
@@ -55,17 +56,19 @@ p {
   left: 0px;
   width: 350px;
   height: 200px;
-  border: 1px dashed rgb(255, 255, 255);
-  background-color: #ffffff;
-  opacity: 0.15;
+  border: 1px dashed rgb(255, 255, 255,0.15);
+  // background-color: #ffffff;
+  // opacity: 0.15;
+  background-color: transparent;
+  opacity: 1;
   cursor: move;
   z-index: 3;
 }
 
 .activeContainer {
-  border: 1px dashed rgb(0 225 255) !important;
-  background-color: rgba(0, 225, 255, 0.163) !important;
-  opacity: 1 !important;
+  border: 1px dashed rgb(0 225 255);
+  // background-color: rgba(0, 225, 255, 0.163) !important;
+  opacity: 1;
 }
 
 .resizer {

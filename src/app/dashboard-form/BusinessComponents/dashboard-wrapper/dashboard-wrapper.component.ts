@@ -176,12 +176,12 @@ export class DashboardWrapperComponent implements OnInit {
       opacity: 0.15,
       zIndex: this.dashboardFormService.containerArray.length == 0 ? 2 : this.dashboardFormService.containerArray.length + 1,
       containerPosition: {
-        top: 0,
-        left: 0,
+        top: 200,
+        left: 200,
         px: 0,
         py: 0,
-        height: 250,
-        width: 250,
+        height: 150,
+        width: 150,
       },
       containerPadding: {
         top: 10,
