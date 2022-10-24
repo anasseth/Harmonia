@@ -39,15 +39,15 @@
   margin-right: 0 !important;
 }
 
-// .scrollContainer::-webkit-scrollbar {
-//   width: 0.2em;
-// }
+div.scroll-container::-webkit-scrollbar {
+  width: 0.2em;
+}
 
-// .scrollContainer::-webkit-scrollbar-track {
-//   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-// }
+div.scroll-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
 
-// .scrollContainer::-webkit-scrollbar-thumb {
-//   background-color: darkgrey;
-//   outline: 1px solid slategrey;
-// }
+div.scroll-container::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
