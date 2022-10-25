@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, OnChanges, Output, Input, ViewChild, SimpleChanges } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { DashBoardFormService } from '../../services/dashboard-form.service';
 import { selectorData } from '../../BusinessComponents/dashboard-wrapper/sample.data';
@@ -41,15 +41,19 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
 
     this.containerSpecControlForm.valueChanges.subscribe(
       (changes) => {
-        this.dashboardFormService.containerArray[this.selectedIndex] = changes
-        // console.log(this.dashboardFormService.containerArray)
+        if (this.selectedIndex != -1) {
+          this.dashboardFormService.containerArray[this.selectedIndex] = changes
+          // console.log(this.dashboardFormService.containerArray)
+        }
       }
     )
     this.dashboardFormService.containerPropertyUpdated.subscribe(
       (res: boolean) => {
-        this.containerSpecControlForm.patchValue(
-          this.dashboardFormService.containerArray[this.selectedIndex]
-        )
+        if (this.selectedIndex != -1) {
+          this.containerSpecControlForm.patchValue(
+            this.dashboardFormService.containerArray[this.selectedIndex]
+          )
+        }
       }
     )
   }
@@ -72,32 +76,34 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
   }
 
   generateForm() {
-
     this.containerSpecControlForm = this.fb.group(
       {
-        pageID: [0],
-        pageContainerID: [0],
-        containerIndex: [0],
-        name: ['Untitled'],
-        pageContainerType: [this.selectorName],
-        tag: [''],
-        backgroundColor: ['#ffffff'],
-        opacity: [0.15],
-        zIndex: [1],
+        pageID: [0, Validators.required],
+        pageContainerID: [0, Validators.required],
+        containerIndex: [0, Validators.required],
+        name: ['Untitled', Validators.required],
+        pageContainerType: [this.selectorName, Validators.required],
+        tag: ['', Validators.required],
+        zoomable: [false, Validators.required],
+        isZoomed: [false, Validators.required],
+        analysisId: [0, Validators.required],
+        backgroundColor: ['#ffffff', Validators.required],
+        opacity: [0.15, Validators.required],
+        zIndex: [1, Validators.required],
         containerPosition: this.fb.group(
           {
-            top: [0],
-            height: [250],
-            width: [250],
-            left: [0]
+            top: [0, Validators.required],
+            height: [250, Validators.required],
+            width: [250, Validators.required],
+            left: [0, Validators.required]
           }
         ),
         containerPadding: this.fb.group(
           {
-            top: [0],
-            bottom: [0],
-            right: [0],
-            left: [0],
+            top: [0, Validators.required],
+            bottom: [0, Validators.required],
+            right: [0, Validators.required],
+            left: [0, Validators.required],
           }
         )
       }

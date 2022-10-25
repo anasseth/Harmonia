@@ -15,7 +15,6 @@ export class LabelPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("Label Panel Setting : ", this.settings);
   }
 
 }

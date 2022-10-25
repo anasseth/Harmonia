@@ -18,7 +18,6 @@ export class InputTextPanelComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("Input Text Panel Setting : ", this.settings);
   }
 
   changeValue(event: any) {

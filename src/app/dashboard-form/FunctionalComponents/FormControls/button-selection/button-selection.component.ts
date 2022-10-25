@@ -21,7 +21,6 @@ export class ButtonSelectionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log("Label Panel Setting : ", this.settings);
   }
 
   onClickButton() {

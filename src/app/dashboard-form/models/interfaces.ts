@@ -12,6 +12,7 @@ export interface DashboardPage {
     linkedScale: boolean | null;
     linkedLegendWidth: boolean | null;
     dashboardPageSetting: DashboardPageSetting;
+    pageContainers?:PageContainer[];
 }
 
 export interface DashboardPageSetting {
