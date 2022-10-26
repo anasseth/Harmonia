@@ -3,8 +3,8 @@
     <div class="d-flex justify-content-end pe-3 ps-3">
         <mat-icon class="itl-cursor-pointer" value="side" (click)="toggleDrawer()"
             [ngClass]="{'itl-color-e36c26':drawer.opened,'itl-color-6d6d6d':!drawer.opened}">edit</mat-icon>
-        <!--         <mat-icon *ngIf="dashboardElement&&dashboardElement.AccessLevel==='Owner'" class="itl-color-e36c26" value="push"
-            (click)="drawer.toggle()">reply_all</mat-icon> -->
+        <mat-icon class="itl-color-e36c26" value="push"
+            (click)="saveDashboardData()">save</mat-icon>
     </div>
 </div>
 <div style="height: 100vh;" class="mat-typography mat-app-background position-relative header-image">
@@ -12,7 +12,7 @@
         <!-- container -->
         <div class="position-absolute" style="width:100%;height:100%;top:0%;left:0%;background-color: rgb(0, 0, 0);"> <!-- Check this !!! -->
             <div *ngFor="let container of this.dashboardFormService.containerArray; let i = index" class="resizable"
-                [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeContainer' : ''"
+                [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex && this.matDrawer.opened ? 'activeContainer' : ''"
                 (click)="activateContainer(container.containerIndex)" 
                 [ngStyle]="{'z-index':isNavigatedAway? 0 : container.zIndex}"
                 [style.transform]="'translate3d(' + container.containerPosition.left + 'px,' + container.containerPosition.top + 'px,' + '0px)'"
@@ -24,28 +24,28 @@
                 }"
                 (window:mouseup)="setStatus($event, 0, null, i)">
                 <div class="cursor-1 resizer top-left"
-                    [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"
+                    [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex && this.matDrawer.opened ? 'activeResizer' : ''"
                     (mousedown)="setStatus($event, 1, topLeftResize, i)"
                     [style]="{
                         zIndex: container.zIndex + 1
                     }"
                     ></div>
                 <div class="cursor-2 resizer top-right"
-                    [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"
+                    [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex && this.matDrawer.opened ? 'activeResizer' : ''"
                     (mousedown)="setStatus($event, 1, topRightResize, i)"
                     [style]="{
                         zIndex: container.zIndex + 1
                     }"
                     ></div>
                 <div class="cursor-4 resizer bottom-left"
-                    [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"
+                    [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex && this.matDrawer.opened ? 'activeResizer' : ''"
                     (mousedown)="setStatus($event, 1, bottomLeftResize, i)"
                     [style]="{
                         zIndex: container.zIndex + 1
                     }"
                     ></div>
                 <div class="cursor-3 resizer bottom-right"
-                    [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex ? 'activeResizer' : ''"
+                    [ngClass]="this.dashboardFormService.selectedContainerIndex == container.containerIndex && this.matDrawer.opened ? 'activeResizer' : ''"
                     (mousedown)="setStatus($event, 1, bottomRightResize, i)"
                     [style]="{
                         zIndex: container.zIndex + 1
