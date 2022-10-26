@@ -1,0 +1,18 @@
+<div class="itl-background-1c1e20 itl-custom-icons itl-padding-left-10">
+  <div
+    style="display: flex; justify-content: space-evenly; align-items: center"
+  >
+    <div
+      *ngFor="let iconButton of this.settings?.option"
+      class="itl-cursor-pointer text-center"
+      (click)="onSelect(iconButton.value)"
+    >
+      <mat-icon class="itl-icon-custom me-3 mb-1 icon-btn" [ngClass]="this.settings.formGroup.controls[this.settings.fieldName].value == iconButton.value ? 'activeIcon' : '' ">
+        {{ iconButton.iconName }}
+      </mat-icon>
+      <div class="itl-line-height-20 itl-color-868686 itl-fs-11 font-size-11">
+        {{ iconButton.btnText }}
+      </div>
+    </div>
+  </div>
+</div>

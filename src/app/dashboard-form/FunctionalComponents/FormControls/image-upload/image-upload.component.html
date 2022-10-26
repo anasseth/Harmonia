@@ -1,0 +1,19 @@
+<form
+  class="d-flex justify-content-start itl-panel-lbel btn-style-adjustment"
+  style="display: flex; justify-content: space-evenly; align-items: center"
+  (click)="onClickButton()"
+>
+  <div class="colour-e5e5e5 w-50 itl-fs-12">{{ settings.title }}</div>
+  <div class="colour-e5e5e5 w-50 d-flex justify-content-end">
+    <label for="file" class="upload-btn">Choose Image</label>
+    <form [formGroup]="imageUploadForm" style="display:none; visibility: hidden;">
+      <input
+        formControlName="file"
+        id="file"
+        type="file"
+        class="form-control"
+        (change)="onFileChange($event)"
+      />
+    </form>
+  </div>
+</form>
