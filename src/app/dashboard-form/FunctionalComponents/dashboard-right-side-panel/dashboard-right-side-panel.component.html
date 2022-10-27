@@ -489,26 +489,71 @@
                 </mat-icon>
               </mat-expansion-panel-header>
               <div class="ps-3 pe-3 pb-1 pt-1">
-                <itl-input-text-panel
+                <itl-image-upload
                   [settings]="{
-                    title: 'Name',
-                    fieldName: 'name',
-                    formGroup: containerSpecControlForm,
-                    width: 'w-100',
-                    valueType: 'String'
-                  }"
-                >
-                </itl-input-text-panel>
-              </div>
-              <div class="ps-3 pe-3 pb-1 pt-1">
-                <itl-label-panel
-                  [settings]="{
-                    title: 'Type',
-                    fieldName: 'pageContainerType',
+                    title: 'Source',
+                    fieldName: 'imageSource',
                     formGroup: containerSpecControlForm
                   }"
                 >
-                </itl-label-panel>
+                </itl-image-upload>
+              </div>
+            </mat-expansion-panel>
+          </div>
+
+          <div class="itl-thik-border-top-color-2b2d2f itl-sub-accordion">
+            <mat-expansion-panel
+              class="rounded-0 shadow-none"
+              (opened)="panelOpenContentState = true"
+              (closed)="panelOpenContentState = false"
+              hideToggle="true"
+            >
+              <mat-expansion-panel-header
+                class="itl-height-36 itl-padding-left-10 itl-padding-right-20 itl-sub-accordion"
+              >
+                <div class="colour-e5e5e5 w-50 fw-bold font-size-13">Image Placement</div>
+                <mat-icon
+                  *ngIf="!panelOpenContentState"
+                  class="itl-color-icon-custom"
+                  >add_circle
+                </mat-icon>
+                <mat-icon
+                  *ngIf="panelOpenContentState"
+                  class="itl-color-icon-custom"
+                  >remove_circle
+                </mat-icon>
+              </mat-expansion-panel-header>
+              <div class="ps-3 pe-3 pb-1 pt-1">
+                <itl-icon-btn-panel
+                [settings]="{
+                  title:'',
+                  fieldName: 'imageFit',
+                  formGroup: containerSpecControlForm,
+                  option:[
+                  {
+                    btnText:'Center',
+                    iconName:'center_focus_strong',
+                    value:'contain'
+                  },
+                  {
+                    btnText:'Full',
+                    iconName:'fullscreen',
+                    value:'cover'
+                  },
+                  {
+                    btnText:'Stretch',
+                    iconName:'settings_overscan',
+                    value:'fit'
+                  },
+                  {
+                    btnText:'Anchor',
+                    iconName:'picture_in_picture',
+                    value:'none'
+                  },
+                  ]
+                }"
+                >
+                </itl-icon-btn-panel>
               </div>
             </mat-expansion-panel>
           </div>

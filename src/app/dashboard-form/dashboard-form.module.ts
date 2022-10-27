@@ -15,6 +15,8 @@ import { SwitcherToggleComponent } from './FunctionalComponents/FormControls/swi
 import { ContainerComponent } from './FunctionalComponents/container/container.component';
 import { MaterialDesignModule } from '../material/material.module';
 import { ButtonSelectionComponent } from './FunctionalComponents/FormControls/button-selection/button-selection.component';
+import { ImageUploadComponent } from './FunctionalComponents/FormControls/image-upload/image-upload.component';
+import { IconBtnPanelComponent } from './FunctionalComponents/FormControls/icon-btn-panel/icon-btn-panel.component';
 
 const routes: Routes = [{ path: '', component: DashboardWrapperComponent },];
 
@@ -31,7 +33,7 @@ const routes: Routes = [{ path: '', component: DashboardWrapperComponent },];
         DashboardRightSidePanelComponent, 
         DashboardViewComponent, 
         TitleAccordionComponent, 
-        InputTextPanelComponent, LabelPanelComponent, SwitcherToggleComponent, ContainerComponent, ButtonSelectionComponent
+        InputTextPanelComponent, LabelPanelComponent, SwitcherToggleComponent, ContainerComponent, ButtonSelectionComponent, ImageUploadComponent, IconBtnPanelComponent
     ],
     // providers: [StoryActions]
 })

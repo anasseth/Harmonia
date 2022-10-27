@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { MatAccordion } from '@angular/material/expansion';
 import { DashBoardFormService } from '../../services/dashboard-form.service';
 import { selectorData } from '../../BusinessComponents/dashboard-wrapper/sample.data';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'itl-dashboard-right-side-panel',
@@ -22,7 +23,8 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
 
   constructor(
     public _dashboardFormService: DashBoardFormService,
-    public fb: FormBuilder
+    public fb: FormBuilder,
+    public sanitizer: DomSanitizer
   ) {
     this.dashboardFormService = _dashboardFormService;
   }
@@ -41,6 +43,8 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
 
     this.containerSpecControlForm.valueChanges.subscribe(
       (changes) => {
+        console.log("Value Changes : ", changes)
+        console.log("Selected Index : ", this.selectedIndex)
         if (this.selectedIndex != -1) {
           this.dashboardFormService.containerArray[this.selectedIndex] = changes
           // console.log(this.dashboardFormService.containerArray)
@@ -90,6 +94,9 @@ export class DashboardRightSidePanelComponent implements OnInit, OnChanges {
         backgroundColor: ['#ffffff', Validators.required],
         opacity: [0.15, Validators.required],
         zIndex: [1, Validators.required],
+        imageSource: ['Test 2'],
+        imageFit:['cover'],
+        imagePosition:['center'],
         containerPosition: this.fb.group(
           {
             top: [0, Validators.required],

@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, NgZo
 import { MatDrawer } from '@angular/material/sidenav';
 import { DashBoardFormService } from '../../services/dashboard-form.service';
 import { NavigationEnd, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 const enum Status {
   OFF = 0,
@@ -38,7 +39,8 @@ export class DashboardWrapperComponent implements OnInit {
   constructor(
     private router: Router,
     private ngZone: NgZone,
-    public dashboardFormService: DashBoardFormService
+    public dashboardFormService: DashBoardFormService,
+    public sanitizer: DomSanitizer
   ) {
     router.events.subscribe((val: NavigationEnd | any) => {
       this.dashboardFormService.containerArray = []
@@ -170,6 +172,9 @@ export class DashboardWrapperComponent implements OnInit {
       backgroundColor: '#ffffff',
       opacity: 0.15,
       zIndex: this.dashboardFormService.containerArray.length == 0 ? 2 : this.dashboardFormService.containerArray.length + 1,
+      imageSource:'',
+      imageFit:'contain',
+      imagePosition:'center',
       containerPosition: {
         top: 100,
         left: 100,
@@ -179,10 +184,10 @@ export class DashboardWrapperComponent implements OnInit {
         width: 150,
       },
       containerPadding: {
-        top: 10,
-        bottom: 20,
-        right: 30,
-        left: 40
+        top: 0,
+        bottom: 0,
+        right: 0,
+        left: 0
       }
     }
 

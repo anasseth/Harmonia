@@ -62,7 +62,14 @@
                 backgroundColor:container.backgroundColor}" 
                 class="w-100 h-100"
                 >
-
+                    <img 
+                        *ngIf="container.pageContainerType == 'Image'" 
+                        [src]="container?.imageSource" class="w-100 h-100" 
+                        [style]="{
+                            objectFit:container?.imageFit,
+                            objectPosition:container?.imagePosition
+                        }"
+                    />
                 </div>
             </div>
         </div>
